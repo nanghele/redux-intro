@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Learn Redux</title>
+    <link rel="shortcut icon" type="image/png" href="http://www.favicon.cc/logo3d/805435.png"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" >
+  </head>
+  <body>
+    <body>
+
+
+      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+
+
+					<div class="panel panel-red">
+						<div class="panel-heading  text-center">
+						<h3 id="total">loading</h3>
+						</div>
+
+						<div class="panel-footer">
+							<a id="up"   class="btn btn-lg btn-block btn-info" href="#" onClick="increment()">UP</a>
+              <a id="down" class="btn btn-lg btn-block btn-danger" href="#" onClick="decrement()">DOWN</a>
+						</div>
+					</div>
+
+
+
+				</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.0.5/redux.min.js"></script>
+    <script>
+    function incrementAction() {
+  store.dispatch({ type: 'INCREMENT' })
+}
+
+// counter is the reducer (function) that manages state updates:
+const counter = (state = 0, action) => {
+  console.log(action)
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1
+    case 'DECREMENT':
+      return state - 1
+    default:
+      return state
+  }
+}
+
+const { createStore } = Redux // Redux is GLOBAL Object from redux.min.js
+// create the store for our mini-app using the counter reducer
+const store = createStore(counter)
+console.log(store.getState()) // counter should be 0 (zero)
+
+store.dispatch({ type: 'INCREMENT' }) // increment from zero to one
+console.log(store.getState()) // counter is 1 (one)
+
+const render = () => {
+  // render function updates DOM with counter value
+  //document.body.innerText = store.getState()
+  $('#total').text(store.getState())
+}
+
+store.subscribe(render) // all actions re-render the DOM
+render() // render the initial state of the page/app
+
+function increment() {
+  store.dispatch({ type: 'INCREMENT' })
+}
+
+function decrement() {
+  store.dispatch({ type: 'DECREMENT' })
+}
+</script>
+  </body>
+</html>
