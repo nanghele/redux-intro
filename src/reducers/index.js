@@ -1,7 +1,6 @@
 import { INCREMENT, DECREMENT } from '../actions/types'
 
-export default function(state = 0, action) {
-  console.log(action)
+const counter = (state = 0, action) => {
   switch (action.type) {
     case INCREMENT:
       return state + 1
@@ -11,3 +10,5 @@ export default function(state = 0, action) {
       return state
   }
 }
+
+export default counter
