@@ -17,14 +17,14 @@ class App extends Component {
             <span
               id="up"
               className="btn btn-lg btn-block btn-info"
-              onClick={this.props.increment}
+              onClick={() => this.props.increment(1)}
             >
               UP
             </span>
             <span
               id="down"
               className="btn btn-lg btn-block btn-danger"
-              onClick={this.props.decrement}
+              onClick={() => this.props.decrement(3)}
             >
               DOWN
             </span>

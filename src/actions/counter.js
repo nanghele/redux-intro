@@ -1,9 +1,9 @@
 import { INCREMENT, DECREMENT } from './types'
 
-export function increment() {
-  return { type: INCREMENT, amount: 2 }
+export function increment(value) {
+  return { type: INCREMENT, amount: value }
 }
 
-export function decrement() {
-  return { type: DECREMENT, amount: 1 }
+export function decrement(value) {
+  return { type: DECREMENT, amount: value }
 }
