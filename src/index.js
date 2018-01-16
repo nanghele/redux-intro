@@ -6,10 +6,12 @@ import App from './components/App'
 import registerServiceWorker from './registerServiceWorker'
 
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import counter from './reducers'
 
-let store = createStore(counter)
+import logger from 'redux-logger'
+
+let store = createStore(counter, applyMiddleware(logger))
 
 ReactDOM.render(
   <Provider store={store}>
