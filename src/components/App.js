@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { increment, decrement } from '../actions/counter'
 
-class App extends Component {
+export class App extends Component {
   state: { counter: 0 }
 
   render() {
