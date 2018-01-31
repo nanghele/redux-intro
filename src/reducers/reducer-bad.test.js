@@ -3,6 +3,7 @@ import { INCREMENT, DECREMENT } from '../actions/types'
 const ADD = 'adding'
 const DEL = 'delete'
 const UPDATE = 'update'
+const UPDATE_TIME = 'update_time'
 const reduce = (state, action) => {
   let newState = { ...state }
   switch (action.type) {
@@ -18,6 +19,12 @@ const reduce = (state, action) => {
       return newState
     case UPDATE:
       newState[action.id] = action.payload
+      return newState
+    case UPDATE_TIME:
+      newState[action.id] = {
+        ...newState[action.id],
+        time: action.payload.time
+      }
       return newState
     default:
       return state
@@ -74,6 +81,28 @@ it('updating one element', () => {
     reduce(state, {
       type: UPDATE,
       payload: { name: 'roberta', gender: 'female', time: 526 },
+      id: 3
+    })
+  ).toEqual(newstate)
+})
+
+it('updating time on one element', () => {
+  const state = {
+    1: { name: 'antonio', gender: 'male', time: 249 },
+    2: { name: 'paolo', gender: 'male', time: 390 },
+    3: { name: 'roberta', gender: 'female', time: 460 }
+  }
+
+  const newstate = {
+    1: { name: 'antonio', gender: 'male', time: 249 },
+    2: { name: 'paolo', gender: 'male', time: 390 },
+    3: { name: 'roberta', gender: 'female', time: 526 }
+  }
+
+  expect(
+    reduce(state, {
+      type: UPDATE_TIME,
+      payload: { time: 526 },
       id: 3
     })
   ).toEqual(newstate)
