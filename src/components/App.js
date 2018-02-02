@@ -10,7 +10,7 @@ export class App extends Component {
   }
 
   decrement = () => {
-    this.props.decrement(2)
+    this.props.decrement(1)
   }
 
   render() {

@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker'
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import counter from './reducers'
+import counter from './reducers/index'
 
 import logger from 'redux-logger'
 

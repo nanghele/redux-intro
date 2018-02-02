@@ -20,23 +20,6 @@ const add = (state, action) => {
 }
 
 it('sums numbers', () => {
-  expect(reduce(1, { type: INCREMENT })).toEqual(2)
-  expect(reduce(5, { type: DECREMENT })).toEqual(4)
-})
-
-it('add element testing', () => {
-  const state = {
-    1: { name: 'antonio', gender: 'male', time: 249 },
-    2: { name: 'paolo', gender: 'male', time: 390 }
-  }
-
-  const roberta = { name: 'roberta', gender: 'female', time: 460 }
-
-  const newstate = {
-    1: { name: 'antonio', gender: 'male', time: 249 },
-    2: { name: 'paolo', gender: 'male', time: 390 },
-    3: { name: 'roberta', gender: 'female', time: 460 }
-  }
-
-  expect(add(state, { type: ADD, payload: roberta })).toEqual(newstate)
+  expect(reduce(1, { type: INCREMENT, amount: 1 })).toEqual(2)
+  expect(reduce(5, { type: DECREMENT, amount: 1 })).toEqual(4)
 })
