@@ -5,6 +5,14 @@ import { increment, decrement } from '../actions/counter'
 class App extends Component {
   state: { counter: 0 }
 
+  increment = () => {
+    this.props.increment(1)
+  }
+
+  decrement = () => {
+    this.props.decrement(2)
+  }
+
   render() {
     return (
       <div className="col-xs-6 col-sm-6 col-md-3 col-lg-3">
@@ -17,14 +25,14 @@ class App extends Component {
             <span
               id="up"
               className="btn btn-lg btn-block btn-info"
-              onClick={() => this.props.increment(1)}
+              onClick={this.increment}
             >
               UP
             </span>
             <span
               id="down"
               className="btn btn-lg btn-block btn-danger"
-              onClick={() => this.props.decrement(3)}
+              onClick={this.decrement}
             >
               DOWN
             </span>
